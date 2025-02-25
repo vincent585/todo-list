@@ -1,4 +1,4 @@
-class Task {
+export default class Task {
     get notes() {
         return this._notes;
     }
