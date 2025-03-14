@@ -19,4 +19,12 @@ body {
     flex-direction: column;
     padding: 30px;
     gap: 30px;
+    background-color: #E0F4F1;
+    color: #333333;
+}
+
+.content {
+    display: grid;
+    background-color: #F4F6F9;
+    color: #333333;
 }
