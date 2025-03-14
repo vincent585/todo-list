@@ -1,6 +1,7 @@
 import { projectModal } from "./project-modal";
+import projectContainer from "./project-container-instance";
 
-export const sidebar = (projectContainer) => {
+export const sidebar = () => {
     let sidebarElement = document.querySelector('.sidebar');
 
     for (let project of projectContainer.projects) {

@@ -1,3 +1,5 @@
+import projectContainer  from './project-container-instance';
+
 export const projectModal = () => {
     let main = document.querySelector('.main');
     let modal = document.querySelector('dialog');
