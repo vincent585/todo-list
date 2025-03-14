@@ -24,6 +24,8 @@ body {
 }
 
 .project {
+    font-size: 20px;
+    padding-left: 10px;
     &:hover {
         color: #4D89FF;
     }
@@ -37,4 +39,58 @@ body {
     display: grid;
     background-color: #F4F6F9;
     color: #333333;
+}
+
+form {
+    display: grid;
+    gap: 15px;
+    padding: 30px;
+    font-size: 20px;
+}
+
+dialog {
+    width: max-content;
+    height: fit-content;
+    position: fixed;
+    top: 20%;
+    justify-self: center;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px gray;
+}
+
+.form-buttons {
+    grid-column: 1 / 2;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    color: #333333;
+}
+
+.primary-button {
+    background-color: #4D89FF;
+    flex: 1;
+    height: 2.5rem;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bolder;
+    border: none;
+
+    &:hover {
+        background-color: #F1C40F;
+    }
+}
+
+.secondary-button {
+    border-color: #4D89FF;
+    background-color: #F4F6F9;
+    flex: 1;
+    height: 2.5rem;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bolder;
+
+    &:hover {
+        border-color: #F1C40F;
+    }
 }
