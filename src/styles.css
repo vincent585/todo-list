@@ -23,7 +23,15 @@ body {
     color: #333333;
 }
 
-.projects {}
+.project {
+    &:hover {
+        color: #4D89FF;
+    }
+
+    &:active {
+        color: #A1D5FF;
+    }
+}
 
 .content {
     display: grid;
