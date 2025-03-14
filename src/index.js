@@ -1,12 +1,9 @@
 import "./styles.css"
 
-import Project from "./models/project";
-import Task from "./models/task";
+import ProjectContainer from "./models/project-container";
+import { sidebar } from "./sidebar";
 
-let project = new Project("First Project");
-let task = new Task(
-    "My new task",
-    "Test task",
-    "2025-02-25",
-    "URGENT"
-);
+let projectContainer = new ProjectContainer();
+
+sidebar(projectContainer);
+
