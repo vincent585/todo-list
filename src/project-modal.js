@@ -1,4 +1,6 @@
 import projectContainer  from './project-container-instance';
+import Project from "./models/project";
+import { addNewProject } from "./renderSidebar";
 
 export const projectModal = () => {
     let main = document.querySelector('.main');
@@ -79,8 +81,10 @@ function createBtn(modal, form) {
         event.preventDefault();
 
         let formData = new FormData(form);
-
-        // TODO - handle modal closing and adding project
+        let project = new Project(formData.get('name'));
+        projectContainer.addProject(new Project(project));
+        addNewProject(project);
+        modal.close();
     });
 
     return createBtn;

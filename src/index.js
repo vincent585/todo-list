@@ -1,6 +1,6 @@
 import "./styles.css"
 
-import { sidebar } from "./sidebar";
+import { renderSidebar } from "./renderSidebar";
 
-sidebar();
+renderSidebar();
 
