@@ -1,6 +1,6 @@
 import projectContainer  from './project-container-instance';
 import Project from "./models/project";
-import { addNewProject } from "./renderSidebar";
+import { addNewProject } from "./sidebar";
 
 export const projectModal = () => {
     let main = document.querySelector('.main');
