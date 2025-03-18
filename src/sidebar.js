@@ -1,5 +1,6 @@
 import { projectModal } from "./project-modal";
 import projectContainer from "./project-container-instance";
+import { renderTasks } from "./task-view";
 
 export const sidebar = document.querySelector('.sidebar');
 
@@ -35,6 +36,10 @@ function createProjectElement(project) {
     projectElement.classList.add("project");
     projectElement.textContent = project.name;
     projectElement.setAttribute("data-name", project.name);
+
+    projectElement.addEventListener("click", () => {
+       renderTasks(project);
+    });
 
     return projectElement;
 }
