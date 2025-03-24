@@ -3,7 +3,7 @@ export const renderTasks = (project) => {
     if (isActiveProject(content, project)) {
         return;
     }
-
+    content.replaceChildren();
     content.append(addTitle(project.name));
 };
 
