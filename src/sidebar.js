@@ -46,8 +46,16 @@ function createProjectElement(project) {
 
 function addProjectButton() {
     let button = document.createElement("button");
-    button.textContent = "Add Project";
-    button.classList.add("primary-button");
+    button.classList.add("add-button");
+
+    let buttonContent = document.createElement('p');
+    let icon = document.createElement('i');
+
+    icon.classList.add('bi', 'bi-plus-lg');
+    buttonContent.textContent = 'Add Project';
+
+    button.appendChild(icon);
+    button.appendChild(buttonContent);
 
     button.addEventListener("click", () => {
         projectModal();
