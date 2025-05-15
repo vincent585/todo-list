@@ -11,7 +11,7 @@ export const renderTasks = (project) => {
 
 function createProjectContainer(project) {
     let projectContainer = document.createElement('div');
-    projectContainer.classList.add('project-container');
+    projectContainer.classList.add('project-content');
     projectContainer.appendChild(addProjectTitle(project.name));
     projectContainer.appendChild(createTaskContainer(project));
 
@@ -37,7 +37,7 @@ function createTaskContent(task) {
     let taskContent = document.createElement('div');
     taskContent.classList.add('task');
 
-    let taskTitle = document.createElement('p');
+    let taskTitle = document.createElement('h3');
     taskTitle.textContent = task.title;
     let dueDate = document.createElement('p');
     dueDate.textContent = format(task.dueDate, 'MM/dd/yyyy');
