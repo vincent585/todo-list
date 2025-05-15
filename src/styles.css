@@ -43,6 +43,14 @@ body {
 .project-content {
     padding-left: 30px;
     padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 60%;
+}
+
+.project-content .primary-button {
+    max-width: 15%;
 }
 
 .task-container {
@@ -94,28 +102,30 @@ dialog {
 
 .primary-button {
     background-color: #4D89FF;
-    flex: 1;
-    height: 2.5rem;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: bolder;
     border: none;
+
 
     &:hover {
         background-color: #F1C40F;
     }
 }
 
+.form-buttons button {
+    flex: 1;
+}
+
 .secondary-button {
     border-color: #4D89FF;
     background-color: #F4F6F9;
-    flex: 1;
-    height: 2.5rem;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: bolder;
 
     &:hover {
         border-color: #F1C40F;
     }
+}
+
+button {
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bolder;
+    height: 2.5rem;
 }

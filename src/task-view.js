@@ -14,6 +14,7 @@ function createProjectContainer(project) {
     projectContainer.classList.add('project-content');
     projectContainer.appendChild(addProjectTitle(project.name));
     projectContainer.appendChild(createTaskContainer(project));
+    projectContainer.appendChild(createNewTaskButton());
 
     return projectContainer;
 }
@@ -46,6 +47,14 @@ function createTaskContent(task) {
     taskContent.appendChild(dueDate);
 
     return taskContent;
+}
+
+function createNewTaskButton() {
+    let button = document.createElement('button');
+    button.textContent = 'New Task';
+    button.classList.add('primary-button');
+
+    return button;
 }
 
 function isActiveProject(content, project) {
