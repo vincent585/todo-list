@@ -1,17 +1,51 @@
+const { format } = require('date-fns');
+
 export const renderTasks = (project) => {
     let content = document.querySelector('.content');
     if (isActiveProject(content, project)) {
         return;
     }
     content.replaceChildren();
-    content.append(addTitle(project.name));
+    content.appendChild(createProjectContainer(project));
 };
 
-function addTitle(title) {
+function createProjectContainer(project) {
+    let projectContainer = document.createElement('div');
+    projectContainer.classList.add('project-container');
+    projectContainer.appendChild(addProjectTitle(project.name));
+    projectContainer.appendChild(createTaskContainer(project));
+
+    return projectContainer;
+}
+
+function addProjectTitle(title) {
     let titleElement = document.createElement('h1');
     titleElement.textContent = title;
 
     return titleElement;
+}
+
+function createTaskContainer(project) {
+    let taskContainer = document.createElement('div');
+    taskContainer.classList.add('task-container');
+    project.tasks.forEach(task => {taskContainer.appendChild(createTaskContent(task))});
+
+    return taskContainer;
+}
+
+function createTaskContent(task) {
+    let taskContent = document.createElement('div');
+    taskContent.classList.add('task');
+
+    let taskTitle = document.createElement('p');
+    taskTitle.textContent = task.title;
+    let dueDate = document.createElement('p');
+    dueDate.textContent = format(task.dueDate, 'MM/dd/yyyy');
+
+    taskContent.appendChild(taskTitle);
+    taskContent.appendChild(dueDate);
+
+    return taskContent;
 }
 
 function isActiveProject(content, project) {
