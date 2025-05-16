@@ -1,5 +1,7 @@
 const { format } = require('date-fns');
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import projectContainer from './project-container-instance';
+import { taskModal } from "./task-modal";
 
 export const renderTasks = (project) => {
     let content = document.querySelector('.content');
@@ -30,12 +32,12 @@ function addProjectTitle(title) {
 function createTaskContainer(project) {
     let taskContainer = document.createElement('div');
     taskContainer.classList.add('task-container');
-    project.tasks.forEach(task => {taskContainer.appendChild(createTaskContent(task))});
+    project.tasks.forEach(task => taskContainer.appendChild(createTaskContent(task)));
 
     return taskContainer;
 }
 
-function createTaskContent(task) {
+export function createTaskContent(task) {
     let taskContent = document.createElement('div');
     taskContent.classList.add('task');
 
@@ -71,10 +73,19 @@ function createNewTaskButton() {
     let icon = document.createElement('i');
     icon.classList.add('bi', 'bi-plus-lg');
 
+    button.addEventListener('click', () => {
+        let content = document.querySelector('.content');
+        addTask();
+    });
+
     button.appendChild(icon);
     button.appendChild(buttonContent);
 
     return button;
+}
+
+export function getActiveProject(content) {
+    return projectContainer.projects.find(project => isActiveProject(content, project))
 }
 
 function isActiveProject(content, project) {
@@ -93,15 +104,19 @@ function handleTaskClick(task, taskInfo, icon) {
 }
 
 function markTaskComplete(task, taskInfo, icon) {
-    task.done = true;
+    task.toggleComplete();
     taskInfo.classList.add('done');
     icon.classList.remove('bi-circle');
     icon.classList.add('bi-check-circle');
 }
 
 function markTaskIncomplete(task, taskInfo, icon) {
-    task.done = false;
+    task.toggleComplete();
     taskInfo.classList.remove('done');
     icon.classList.remove('bi-check-circle');
     icon.classList.add('bi-circle');
+}
+
+function addTask() {
+    taskModal();
 }

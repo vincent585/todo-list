@@ -1,10 +1,10 @@
-import projectContainer  from './project-container-instance';
-import Project from "./models/project";
-import { addNewProject } from "./sidebar";
+import { getActiveProject } from "./task-view";
+import { createTaskContent } from "./task-view";
+import Task from "./models/task";
 
-export const projectModal = () => {
+export const taskModal = () => {
     let main = document.querySelector('.main');
-    let modal = document.querySelector('.project-modal');
+    let modal = document.querySelector('.task-modal');
 
     if (!modal) {
         modal = createModal();
@@ -16,38 +16,15 @@ export const projectModal = () => {
 
 function createModal() {
     const modal = document.createElement('dialog');
-    modal.classList.add('project-modal');
+    modal.classList.add('task-modal');
     modal.appendChild(createForm(modal));
 
     return modal;
 }
 
-function createForm(modal) {
-    const form = document.createElement('form');
-    form.appendChild(createInputs());
-    form.appendChild(createButtons(modal, form));
-
-    return form;
-}
-
 function createInputs() {
-    const input = document.createElement('div');
-    const inputLabel = document.createElement('label');
-    const inputText = document.createElement('input');
-
-    inputLabel.htmlFor = 'name';
-    inputLabel.textContent = 'Name: ';
-    inputText.type = 'text';
-    inputText.placeholder = 'Project name';
-    inputText.id = 'name';
-    inputText.name = 'name';
-
-    input.classList.add('input-wrapper');
-
-    input.appendChild(inputLabel);
-    input.appendChild(inputText);
-
-    return input;
+    // TODO: Create input elements for form
+    return undefined;
 }
 
 function createButtons(modal, form) {
@@ -58,6 +35,14 @@ function createButtons(modal, form) {
     buttons.appendChild(cancelBtn(modal, form));
 
     return buttons;
+}
+
+function createForm(modal) {
+    const form = document.createElement('form');
+    // TODO form.appendChild(createInputs());
+    form.appendChild(createButtons(modal, form));
+
+    return form;
 }
 
 function cancelBtn(modal, form) {
@@ -83,10 +68,18 @@ function createBtn(modal, form) {
         event.preventDefault();
 
         let formData = new FormData(form);
-        let project = new Project(formData.get('name'));
-        projectContainer.addProject(project);
-        console.log(projectContainer);
-        addNewProject(project);
+        // TODO: get data from form, populate task
+        let task = new Task(
+            "Some new task",
+            "Some description",
+            new Date(2026, 0, 1),
+            "Low");
+
+        let activeProject = getActiveProject(document.querySelector('.content'));
+        activeProject.addTask(task);
+
+        let taskContainer = document.querySelector('.task-container');
+        taskContainer.appendChild(createTaskContent(task));
         modal.close();
     });
 

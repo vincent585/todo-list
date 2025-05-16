@@ -12,7 +12,7 @@ export default class Task {
         this.checklist.push(item);
     }
 
-    markComplete() {
-        this.done = true;
+    toggleComplete() {
+        this.done = !this.done;
     }
 }
