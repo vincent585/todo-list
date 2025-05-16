@@ -23,8 +23,43 @@ function createModal() {
 }
 
 function createInputs() {
-    // TODO: Create input elements for form
-    return undefined;
+
+    const titleInput = createTextInput('title', 'Task title');
+    const descriptionInput = createTextInput('description', 'Task description');
+
+    // TODO: Add priority select dropdown, date picker
+
+    let inputs = [titleInput, descriptionInput];
+    let toReturn = [];
+
+    for (let input of inputs) {
+        let inputWrapper = document.createElement('div');
+        inputWrapper.classList.add('input-wrapper');
+        inputWrapper.append(...input);
+        toReturn.push(inputWrapper);
+    }
+
+    return toReturn;
+}
+
+function createTextInput(property, placeholder) {
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = placeholder;
+    input.id = property;
+    input.name = property;
+
+    const label = createLabel(property);
+
+    return [label, input];
+}
+
+function createLabel(forProp) {
+    const inputLabel = document.createElement('label');
+    inputLabel.htmlFor = forProp;
+    inputLabel.textContent = `${forProp}: `;
+
+    return inputLabel;
 }
 
 function createButtons(modal, form) {
@@ -39,7 +74,8 @@ function createButtons(modal, form) {
 
 function createForm(modal) {
     const form = document.createElement('form');
-    // TODO form.appendChild(createInputs());
+    let inputs = createInputs();
+    form.append(...inputs);
     form.appendChild(createButtons(modal, form));
 
     return form;

@@ -74,7 +74,6 @@ function createNewTaskButton() {
     icon.classList.add('bi', 'bi-plus-lg');
 
     button.addEventListener('click', () => {
-        let content = document.querySelector('.content');
         addTask();
     });
 

@@ -99,6 +99,11 @@ form {
     font-size: 20px;
 }
 
+.input-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
 dialog {
     width: max-content;
     height: fit-content;
