@@ -102,6 +102,11 @@ form {
 .input-wrapper {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
+}
+
+.input-wrapper label {
+    flex-grow: 1;
 }
 
 dialog {
@@ -165,6 +170,13 @@ dialog {
     &:hover {
         color: #4D89FF;
     }
+}
+
+.priority-select {
+    background-color: #fff;
+    border: 1px solid #c8c8c8;
+    text-align: center;
+    width: 50%;
 }
 
 button {
