@@ -140,12 +140,13 @@ function createBtn(modal, form) {
         event.preventDefault();
 
         let formData = new FormData(form);
-        // TODO: get data from form, populate task
+
         let task = new Task(
-            "Some new task",
-            "Some description",
-            new Date(2026, 0, 1),
-            "Low");
+            formData.get('title'),
+            formData.get('description'),
+            formData.get('dueDate'),
+            formData.get('priority')
+        );
 
         let activeProject = getActiveProject(document.querySelector('.content'));
         activeProject.addTask(task);
