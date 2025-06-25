@@ -25,11 +25,10 @@ function createModal() {
 function createInputs() {
     const titleInput = createTextInput('title', 'Task title');
     const descriptionInput = createTextInput('description', 'Task description');
-    const selectInput = createSelectInput("priority", "Task priority");
+    const selectInput = createSelectInput('priority');
+    const dateInput = createDateInput('dueDate');
 
-    // TODO: Add priority select dropdown, date picker
-
-    let inputs = [titleInput, descriptionInput, selectInput];
+    let inputs = [titleInput, descriptionInput, selectInput, dateInput];
     let toReturn = [];
 
     for (let input of inputs) {
@@ -49,15 +48,15 @@ function createTextInput(property, placeholder) {
     input.id = property;
     input.name = property;
 
-    const label = createLabel(property);
+    const label = createLabel(property, property);
 
     return [label, input];
 }
 
-function createLabel(forProp) {
+function createLabel(forProp, labelText) {
     const inputLabel = document.createElement('label');
     inputLabel.htmlFor = forProp;
-    inputLabel.textContent = `${forProp}: `;
+    inputLabel.textContent = `${labelText}: `;
 
     return inputLabel;
 }
@@ -75,7 +74,7 @@ function createSelectInput(property) {
     select.appendChild(medium);
     select.appendChild(low);
 
-    const label = createLabel(property);
+    const label = createLabel(property, property);
 
     return [label, select];
 }
@@ -86,6 +85,17 @@ function createOption(value, optionText) {
     option.textContent = optionText;
 
     return option;
+}
+
+function createDateInput(property) {
+    const dateInput = document.createElement('input');
+    dateInput.type = 'date';
+    dateInput.id = property;
+    dateInput.name = property;
+
+    const label = createLabel(property, 'Due date');
+
+    return [label, dateInput];
 }
 
 function createButtons(modal, form) {

@@ -109,6 +109,10 @@ form {
     flex-grow: 1;
 }
 
+input[type="date"] {
+    width: 50%;
+}
+
 dialog {
     width: max-content;
     height: fit-content;
