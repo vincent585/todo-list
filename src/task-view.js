@@ -2,6 +2,7 @@ const { format } = require('date-fns');
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import projectContainer from './project-container-instance';
 import { taskModal } from "./task-modal";
+import { priority } from "./enums/priority";
 
 export const renderTasks = (project) => {
     let content = document.querySelector('.content');
@@ -32,12 +33,13 @@ function addProjectTitle(title) {
 function createTaskContainer(project) {
     let taskContainer = document.createElement('div');
     taskContainer.classList.add('task-container');
-    project.tasks.forEach(task => taskContainer.appendChild(createTaskContent(task)));
+    project.tasks.forEach(task => taskContainer.append(...createTaskContent(task)));
 
     return taskContainer;
 }
 
 export function createTaskContent(task) {
+    console.log(task);
     let taskContent = document.createElement('div');
     taskContent.classList.add('task');
 
@@ -60,7 +62,33 @@ export function createTaskContent(task) {
     taskContent.appendChild(icon);
     taskContent.appendChild(taskInfo);
 
-    return taskContent;
+    taskContent.addEventListener('click', () => {
+        taskContent.classList.toggle('active');
+        let content = taskContent.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        }
+        else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+        }
+    });
+
+    return [taskContent, taskDetails(task)];
+}
+
+function taskDetails(task) {
+    let taskDetails = document.createElement('div');
+    taskDetails.classList.add('task-details');
+
+    let description = document.createElement('p');
+    description.textContent = task.description;
+    taskDetails.appendChild(description);
+
+    let priorityElement = document.createElement('p');
+    priorityElement.textContent = `Priority: ${priority[task.priority]}`;
+    taskDetails.appendChild(priorityElement);
+
+    return taskDetails;
 }
 
 function createNewTaskButton() {

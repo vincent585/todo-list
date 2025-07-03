@@ -145,14 +145,14 @@ function createBtn(modal, form) {
             formData.get('title'),
             formData.get('description'),
             formData.get('dueDate'),
-            formData.get('priority')
+            Number(formData.get('priority'))
         );
 
         let activeProject = getActiveProject(document.querySelector('.content'));
         activeProject.addTask(task);
 
         let taskContainer = document.querySelector('.task-container');
-        taskContainer.appendChild(createTaskContent(task));
+        taskContainer.append(...createTaskContent(task));
         modal.close();
     });
 

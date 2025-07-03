@@ -8,7 +8,7 @@ export default class ProjectContainer {
             "Task 1",
             "Task 1 description",
             new Date(2026, 0, 1),
-            "High"
+            1
         ));
     }
 

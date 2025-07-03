@@ -62,14 +62,19 @@ body {
 .task {
     color: #333333;
     display: flex;
-    border-top: 1px solid #c8c8c8;
     gap: 5px;
     padding: 10px 0 10px 0;
     align-items: flex-start;
 }
 
-.task:last-child {
-    border-bottom: 1px solid #c8c8c8;
+.task-details {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+}
+
+.active, .task:hover {
+    background-color: #dddddd;
 }
 
 .task i {
