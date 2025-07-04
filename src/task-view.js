@@ -81,7 +81,7 @@ function taskDetails(task) {
     taskDetails.classList.add('task-details');
 
     let description = document.createElement('p');
-    description.textContent = task.description;
+    description.textContent = `Description: ${task.description}`;
     taskDetails.appendChild(description);
 
     let priorityElement = document.createElement('p');
