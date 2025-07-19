@@ -1,5 +1,6 @@
 export default class Task {
     constructor(title, description, dueDate, priority) {
+        this.id = incrementId();
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
@@ -15,4 +16,9 @@ export default class Task {
     toggleComplete() {
         this.done = !this.done;
     }
+}
+
+let id = 0;
+function incrementId() {
+    return id++;
 }

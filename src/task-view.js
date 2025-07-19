@@ -33,38 +33,43 @@ function addProjectTitle(title) {
 function createTaskContainer(project) {
     let taskContainer = document.createElement('div');
     taskContainer.classList.add('task-container');
-    project.tasks.forEach(task => taskContainer.append(...createTaskContent(task)));
+    project.tasks.forEach((task) => taskContainer.append(...createTaskContent(task)));
 
     return taskContainer;
 }
 
-export function createTaskContent(task) {
-    console.log(task);
+export function createTaskContent(task, index) {
     let taskContent = document.createElement('div');
+    taskContent.setAttribute('data-index', task.id.toString());
     taskContent.classList.add('task');
 
-    let icon = document.createElement('i');
-    icon.classList.add('bi', 'bi-circle');
-    icon.addEventListener('click', () => {
-        handleTaskClick(task, taskContent, icon);
+    let taskStart = document.createElement('div');
+    let taskEnd = document.createElement('div');
+    taskEnd.classList.add('task-actions');
+
+    let circleIcon = document.createElement('i');
+    circleIcon.classList.add('bi', 'bi-circle');
+    circleIcon.addEventListener('click', () => {
+        handleTaskClick(task, taskContent, circleIcon);
     });
 
-    let taskInfo = document.createElement('div');
+    let trashIcon = document.createElement('i');
+    trashIcon.classList.add('bi', 'bi-trash');
+    trashIcon.addEventListener('click', () => {
+        let taskToDelete = document.querySelector(`.task[data-index="${task.id}"]`);
+        let taskDetailsToDelete = document.querySelector(`.task[data-index="${task.id}"] + .task-details`);
+        taskToDelete.remove();
+        taskDetailsToDelete.remove();
 
-    let taskTitle = document.createElement('h3');
-    taskTitle.textContent = task.title;
-    let dueDate = document.createElement('p');
-    dueDate.textContent = format(task.dueDate, 'MM/dd/yyyy');
+        getActiveProject(document.querySelector('.content')).tasks.splice(index, 1);
+    });
 
-    taskInfo.appendChild(taskTitle);
-    taskInfo.appendChild(dueDate);
 
-    taskContent.appendChild(icon);
-    taskContent.appendChild(taskInfo);
-
-    taskContent.addEventListener('click', () => {
+    let chevronIcon = document.createElement('i');
+    chevronIcon.classList.add('bi', 'bi-chevron-down');
+    chevronIcon.addEventListener('click', () => {
         taskContent.classList.toggle('active');
-        let content = taskContent.nextElementSibling;
+        let content = document.querySelector(`.task[data-index="${task.id}"] + .task-details`);
         if (content.style.maxHeight) {
             content.style.maxHeight = null;
         }
@@ -72,6 +77,26 @@ export function createTaskContent(task) {
             content.style.maxHeight = content.scrollHeight + 'px';
         }
     });
+
+    let taskPreview = document.createElement('div');
+    taskPreview.classList.add('task-preview');
+
+    let taskTitle = document.createElement('h3');
+    taskTitle.textContent = task.title;
+    let dueDate = document.createElement('p');
+    dueDate.textContent = format(task.dueDate, 'MM/dd/yyyy');
+
+    taskStart.appendChild(taskTitle);
+    taskStart.appendChild(dueDate);
+
+    taskEnd.appendChild(chevronIcon);
+    taskEnd.appendChild(trashIcon);
+
+    taskPreview.appendChild(circleIcon);
+    taskPreview.appendChild(taskStart);
+
+    taskContent.appendChild(taskPreview);
+    taskContent.appendChild(taskEnd);
 
     return [taskContent, taskDetails(task)];
 }
