@@ -1,140 +1,141 @@
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-    height: 100vh;
+  height: 100vh;
 }
 
 .main {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  height: 100%;
 }
 
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 30px 0 30px;
-    gap: 10px;
-    background-color: #E0F4F1;
-    color: #333333;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 30px 0 30px;
+  gap: 10px;
+  background-color: #e0f4f1;
+  color: #333333;
 }
 
 .project-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .project {
-    font-size: 20px;
-    padding-left: 10px;
-    cursor: pointer;
+  font-size: 20px;
+  padding-left: 10px;
+  cursor: pointer;
 
-    &:hover {
-        color: #4D89FF;
-    }
+  &:hover {
+    color: #4d89ff;
+  }
 
-    &:active {
-        color: #A1D5FF;
-    }
+  &:active {
+    color: #a1d5ff;
+  }
 }
 
 .project-content {
-    padding-left: 30px;
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 60%;
+  padding-left: 30px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 60%;
 }
 
 .project-content .primary-button {
-    max-width: 15%;
+  max-width: 15%;
 }
 
 .task-container {
-    /* TODO */
+  /* TODO */
 }
 
-.task-preview, .task-actions {
-    display: flex;
-    gap: 5px;
+.task-preview,
+.task-actions {
+  display: flex;
+  gap: 5px;
 }
 
 .task {
-    color: #333333;
-    display: flex;
-    gap: 5px;
-    padding: 10px 0 10px 10px;
-    align-items: flex-start;
-    justify-content: space-between;
-    border-bottom: 1px solid #333333;
+  color: #333333;
+  display: flex;
+  gap: 5px;
+  padding: 10px 0 10px 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid #333333;
 }
 
 .task-details {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.2s ease-out;
-    padding-left: 10px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+  padding-left: 10px;
 }
 
 .active {
-    background-color: #dddddd;
+  background-color: #dddddd;
 }
 
 .task i {
-    margin-top: 3px;
-    font-size: 18px;
-    cursor: pointer;
+  margin-top: 3px;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .task p {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .done {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .content {
-    display: grid;
-    background-color: #F4F6F9;
-    color: #333333;
+  display: grid;
+  background-color: #f4f6f9;
+  color: #333333;
 }
 
 form {
-    display: grid;
-    gap: 15px;
-    padding: 30px;
-    font-size: 20px;
+  display: grid;
+  gap: 15px;
+  padding: 30px;
+  font-size: 20px;
 }
 
 .input-wrapper {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .input-wrapper label {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 input[type="date"] {
-    width: 50%;
+  width: 50%;
 }
 
 dialog {
-    width: max-content;
-    height: fit-content;
-    position: fixed;
-    top: 20%;
-    justify-self: center;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 2px 2px 2px gray;
+  width: max-content;
+  height: fit-content;
+  position: fixed;
+  top: 20%;
+  justify-self: center;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 2px 2px 2px gray;
 }
 
 .project-modal {
@@ -144,63 +145,62 @@ dialog {
 }
 
 .form-buttons {
-    grid-column: 1 / 2;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    color: #333333;
+  grid-column: 1 / 2;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  color: #333333;
 }
 
 .primary-button {
-    background-color: #4D89FF;
-    border: none;
+  background-color: #4d89ff;
+  border: none;
 
-
-    &:hover {
-        background-color: #F1C40F;
-    }
+  &:hover {
+    background-color: #f1c40f;
+  }
 }
 
 .form-buttons button {
-    flex: 1;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: bolder;
-    height: 2.5rem;
-    text-align: center;
+  flex: 1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bolder;
+  height: 2.5rem;
+  text-align: center;
 }
 
 .secondary-button {
-    border-color: #4D89FF;
-    background-color: #F4F6F9;
+  border-color: #4d89ff;
+  background-color: #f4f6f9;
 
-    &:hover {
-        border-color: #F1C40F;
-    }
+  &:hover {
+    border-color: #f1c40f;
+  }
 }
 
 .add-button {
-    all: unset;
-    display: flex;
-    cursor: pointer;
+  all: unset;
+  display: flex;
+  cursor: pointer;
 
-    &:hover {
-        color: #4D89FF;
-    }
+  &:hover {
+    color: #4d89ff;
+  }
 }
 
 .priority-select {
-    background-color: #fff;
-    border: 1px solid #c8c8c8;
-    text-align: center;
-    width: 50%;
+  background-color: #fff;
+  border: 1px solid #c8c8c8;
+  text-align: center;
+  width: 50%;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 i {
-    margin-right: 5px;
-    color: #4D89FF;
+  margin-right: 5px;
+  color: #4d89ff;
 }
