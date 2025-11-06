@@ -12,5 +12,8 @@
     "bootstrap-icons": "^1.13.1",
     "date-fns": "^4.1.0"
   },
-  "scripts": {}
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack serve"
+  }
 }
